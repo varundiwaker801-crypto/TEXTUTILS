@@ -36,9 +36,10 @@ export default function TextForm(props) {
   };
 
   const handleCopyClick = () => {
-    let copyText = document.getElementById("myBOx");
+    var copyText = document.getElementById("myBOx");
     copyText.select();
-    copyText.setSelectionRange(0, 99999);
+    // copyText.setSelectionRange(0, 99999);
+    document.getSelection().removeAllRanges(); // Deselect the text after copying
 
     navigator.clipboard.writeText(copyText.value);
     props.showAlert("Copied to clipboard!", "success");
