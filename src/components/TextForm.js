@@ -64,28 +64,29 @@ export default function TextForm(props) {
             onChange={handelOnchange}
             style={{ backgroundColor: props.mode === "dark" ? "grey" : "white", color: props.mode === "dark" ? "white" : "black" }}id="myBOx" rows="8" ></textarea>
         </div>
-        <button className="btn btn-primary mx-3" onClick={handelUpClick}>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handelUpClick}>
           Convert to Uppercase
         </button>
 
-        <button className="btn btn-primary mx-3" onClick={handelLoClick}>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handelLoClick}>
           Convert to Lowercase
         </button>
 
-        <button className="btn btn-primary mx-3" onClick={handelClearClick}>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handelClearClick}>
           Clear Text
         </button>
 
-        <button className="btn btn-primary mx-3" onClick={handleTitleClick}>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleTitleClick}>
           Convert to Title Case
         </button>
 
-        <button className="btn btn-primary mx-3" onClick={handleCopyClick}>
+        <button disabled={text.length === 0} className="btn btn-primary mx-1 my-1" onClick={handleCopyClick}>
           Copy Text
         </button>
 
         <button
-          className="btn btn-primary mx-3"
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           onClick={handleExtraSpacesClick}
         >
           Remove Extra Spaces
@@ -97,7 +98,7 @@ export default function TextForm(props) {
             {text.trim() === "" ? 0 : text.trim().split(/\s+/).length} words,{" "}
             {text.length} characters
       </p>
-        <p>{0.33 * text.trim() === "" ? 0 : text.trim().split(/\s+/).length} Minutes to read</p>
+        <p>{0.33 * text.split("").filter((element) => element.length !== 0).length} Minutes to read</p>
         <h2>Preview</h2>
         <p>{text.length>0 ? text : "Enter text in the textbox above to preview it here."}</p>
       </div>
